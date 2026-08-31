@@ -2,26 +2,15 @@
 <html lang="id">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>
-        Pemantauan Risiko Keselamatan Lingkungan
-    </title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pemantauan Risiko Keselamatan Lingkungan</title>
     <link rel="stylesheet" href="style.css">
 
     <style>
-
         /* ==============================
            TAMBAHAN STYLE FORM
            ============================== */
-
         .photo-section {
             margin-top: 20px;
             padding: 18px;
@@ -98,1052 +87,326 @@
             opacity: 0.6;
             cursor: not-allowed;
         }
-
     </style>
-
 </head>
 
-
 <body>
-
 
 <!-- ==============================
      HEADER
      ============================== -->
-
 <header class="header">
-
     <div class="header-content">
-
-        <div class="logo">
-            K3RS
-        </div>
-
+        <div class="logo">K3RS</div>
         <div>
-
-            <h1>
-                Pemantauan Risiko
-            </h1>
-
-            <p>
-                Keselamatan Lingkungan
-            </p>
-
+            <h1>Pemantauan Risiko</h1>
+            <p>Keselamatan Lingkungan</p>
         </div>
-
     </div>
-
 </header>
-
 
 <!-- ==============================
      FORM UTAMA
      ============================== -->
-
 <main class="form-container">
-
     <div class="form-card">
-
-        <h2>
-            Formulir Pemantauan Risiko Keselamatan Lingkungan
-        </h2>
-
+        <h2>Formulir Pemantauan Risiko Keselamatan Lingkungan</h2>
         <p class="form-description">
             Silakan lengkapi data pemantauan dengan benar.
         </p>
 
+        <form id="formLingkungan" onsubmit="event.preventDefault(); simpanPemantauan();">
 
-        <!-- ==============================
-             TANGGAL
-             ============================== -->
-
-        <div class="form-group">
-
-            <label for="tanggal">
-                Tanggal Pemantauan
-                <span class="required">*</span>
-            </label>
-
-            <input
-                type="date"
-                id="tanggal"
-                name="tanggal"
-                required
-            >
-
-        </div>
-
-
-        <!-- ==============================
-             PETUGAS
-             ============================== -->
-
-        <div class="form-group">
-
-            <label for="petugas">
-                Nama Petugas
-                <span class="required">*</span>
-            </label>
-
-            <input
-                type="text"
-                id="petugas"
-                name="petugas"
-                placeholder="Masukkan nama petugas"
-                required
-            >
-
-        </div>
-
-
-        <!-- ==============================
-             UNIT
-             ============================== -->
-
-        <div class="form-group">
-
-            <label for="unit">
-                Unit / Bagian
-                <span class="required">*</span>
-            </label>
-
-            <input
-                type="text"
-                id="unit"
-                name="unit"
-                placeholder="Contoh: K3RS / Instalasi Gizi"
-                required
-            >
-
-        </div>
-
-
-        <!-- ==============================
-             LOKASI
-             ============================== -->
-
-        <div class="form-group">
-
-            <label for="lokasi">
-                Area / Lokasi
-                <span class="required">*</span>
-            </label>
-
-            <input
-                type="text"
-                id="lokasi"
-                name="lokasi"
-                placeholder="Contoh: Koridor Gedung Teratai"
-                required
-            >
-
-        </div>
-
-
-        <!-- ==============================
-             RISIKO
-             ============================== -->
-
-        <div class="form-group">
-
-            <label for="risiko">
-                Potensi Risiko Keselamatan
-                <span class="required">*</span>
-            </label>
-
-            <textarea
-                id="risiko"
-                name="risiko"
-                placeholder="Tuliskan potensi risiko yang ditemukan"
-                required
-            ></textarea>
-
-        </div>
-
-
-        <!-- ==============================
-             DAMPAK
-             ============================== -->
-
-        <div class="form-group">
-
-            <label for="dampak">
-                Dampak
-                <span class="required">*</span>
-            </label>
-
-            <textarea
-                id="dampak"
-                name="dampak"
-                placeholder="Tuliskan dampak yang mungkin terjadi"
-                required
-            ></textarea>
-
-        </div>
-
-
-        <!-- ==============================
-             PENGENDALIAN
-             ============================== -->
-
-        <div class="form-group">
-
-            <label for="pengendalian">
-                Pengendalian
-                <span class="required">*</span>
-            </label>
-
-            <textarea
-                id="pengendalian"
-                name="pengendalian"
-                placeholder="Tuliskan pengendalian yang sudah dilakukan"
-                required
-            ></textarea>
-
-        </div>
-
-
-        <!-- ==============================
-             HASIL PEMANTAUAN
-             ============================== -->
-
-        <div class="form-group">
-
-            <label for="hasil">
-                Hasil Pemantauan
-                <span class="required">*</span>
-            </label>
-
-            <textarea
-                id="hasil"
-                name="hasil"
-                placeholder="Tuliskan hasil pemantauan"
-                required
-            ></textarea>
-
-        </div>
-
-
-        <!-- ==============================
-             REKOMENDASI
-             ============================== -->
-
-        <div class="form-group">
-
-            <label for="rekomendasi">
-                Rekomendasi
-                <span class="required">*</span>
-            </label>
-
-            <textarea
-                id="rekomendasi"
-                name="rekomendasi"
-                placeholder="Tuliskan rekomendasi perbaikan"
-                required
-            ></textarea>
-
-        </div>
-
-
-        <!-- ==============================
-             FOTO BEFORE & AFTER
-             ============================== -->
-
-        <div class="photo-section">
-
-            <h3>
-                Dokumentasi Foto
-            </h3>
-
-            <p>
-                Upload foto kondisi sebelum dan sesudah perbaikan.
-                Foto akan disimpan otomatis ke Google Drive.
-            </p>
-
-
-            <!-- FOTO BEFORE -->
-
-            <div class="photo-group">
-
-                <label for="fotoBefore">
-                    Foto Before
-                    <span class="required">*</span>
+            <!-- TANGGAL -->
+            <div class="form-group">
+                <label for="tanggal">
+                    Tanggal Pemantauan <span class="required">*</span>
                 </label>
-
-                <input
-                    type="file"
-                    id="fotoBefore"
-                    name="fotoBefore"
-                    accept="image/*"
-                    capture="environment"
-                >
-
-                <img
-                    id="previewBefore"
-                    class="photo-preview"
-                    alt="Preview Foto Before"
-                >
-
+                <input type="date" id="tanggal" name="tanggal" required>
             </div>
 
-
-            <!-- FOTO AFTER -->
-
-            <div class="photo-group">
-
-                <label for="fotoAfter">
-                    Foto After
-                    <span class="required">*</span>
+            <!-- PETUGAS -->
+            <div class="form-group">
+                <label for="petugas">
+                    Nama Petugas <span class="required">*</span>
                 </label>
-
-                <input
-                    type="file"
-                    id="fotoAfter"
-                    name="fotoAfter"
-                    accept="image/*"
-                    capture="environment"
-                >
-
-                <img
-                    id="previewAfter"
-                    class="photo-preview"
-                    alt="Preview Foto After"
-                >
-
+                <input type="text" id="petugas" name="petugas" placeholder="Masukkan nama petugas" required>
             </div>
 
-        </div>
+            <!-- UNIT -->
+            <div class="form-group">
+                <label for="unit">
+                    Unit / Bagian <span class="required">*</span>
+                </label>
+                <input type="text" id="unit" name="unit" placeholder="Contoh: K3RS / Instalasi Gizi" required>
+            </div>
 
+            <!-- LOKASI -->
+            <div class="form-group">
+                <label for="lokasi">
+                    Area / Lokasi <span class="required">*</span>
+                </label>
+                <input type="text" id="lokasi" name="lokasi" placeholder="Contoh: Koridor Gedung Teratai" required>
+            </div>
 
-        <!-- ==============================
-             STATUS MESSAGE
-             ============================== -->
+            <!-- RISIKO -->
+            <div class="form-group">
+                <label for="risiko">
+                    Potensi Risiko Keselamatan <span class="required">*</span>
+                </label>
+                <textarea id="risiko" name="risiko" placeholder="Tuliskan potensi risiko yang ditemukan" required></textarea>
+            </div>
 
-        <div
-            id="statusMessage"
-            class="status-message"
-        ></div>
+            <!-- DAMPAK -->
+            <div class="form-group">
+                <label for="dampak">
+                    Dampak <span class="required">*</span>
+                </label>
+                <textarea id="dampak" name="dampak" placeholder="Tuliskan dampak yang mungkin terjadi" required></textarea>
+            </div>
 
+            <!-- PENGENDALIAN -->
+            <div class="form-group">
+                <label for="pengendalian">
+                    Pengendalian <span class="required">*</span>
+                </label>
+                <textarea id="pengendalian" name="pengendalian" placeholder="Tuliskan pengendalian yang sudah dilakukan" required></textarea>
+            </div>
 
-        <!-- ==============================
-             TOMBOL SIMPAN
-             ============================== -->
+            <!-- HASIL PEMANTAUAN -->
+            <div class="form-group">
+                <label for="hasil">
+                    Hasil Pemantauan <span class="required">*</span>
+                </label>
+                <textarea id="hasil" name="hasil" placeholder="Tuliskan hasil pemantauan" required></textarea>
+            </div>
 
-        <button
-            type="button"
-            id="btnSimpan"
-            class="btn-submit"
-            onclick="simpanPemantauan()"
-        >
+            <!-- REKOMENDASI -->
+            <div class="form-group">
+                <label for="rekomendasi">
+                    Rekomendasi <span class="required">*</span>
+                </label>
+                <textarea id="rekomendasi" name="rekomendasi" placeholder="Tuliskan rekomendasi perbaikan" required></textarea>
+            </div>
 
-            SIMPAN PEMANTAUAN
+            <!-- FOTO BEFORE & AFTER -->
+            <div class="photo-section">
+                <h3>Dokumentasi Foto</h3>
+                <p>Upload foto kondisi sebelum dan sesudah perbaikan (Opsional/Wajib sesuai kebutuhan).</p>
 
-        </button>
+                <!-- FOTO BEFORE -->
+                <div class="photo-group">
+                    <label for="fotoBefore">Foto Before</label>
+                    <input type="file" id="fotoBefore" name="fotoBefore" accept="image/*" capture="environment">
+                    <img id="previewBefore" class="photo-preview" alt="Preview Foto Before">
+                </div>
 
+                <!-- FOTO AFTER -->
+                <div class="photo-group">
+                    <label for="fotoAfter">Foto After</label>
+                    <input type="file" id="fotoAfter" name="fotoAfter" accept="image/*" capture="environment">
+                    <img id="previewAfter" class="photo-preview" alt="Preview Foto After">
+                </div>
+            </div>
 
-        <!-- ==============================
-             KEMBALI
-             ============================== -->
+            <!-- STATUS MESSAGE -->
+            <div id="statusMessage" class="status-message"></div>
 
-        <a
-            href="index.html"
-            class="btn-back"
-        >
+            <!-- TOMBOL SIMPAN -->
+            <button type="submit" id="btnSimpan" class="btn-submit">
+                SIMPAN PEMANTAUAN
+            </button>
+        </form>
 
-            ← Kembali ke Halaman Utama
-
-        </a>
-
-
+        <!-- KEMBALI -->
+        <a href="index.html" class="btn-back">← Kembali ke Halaman Utama</a>
     </div>
-
 </main>
 
-
 <script>
-
 /* =====================================================
    URL GOOGLE APPS SCRIPT
    ===================================================== */
-
-const GOOGLE_SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbz9ZhXgU-YEWyMcIvepCwfFQG7yzP0dXrxoo9jgBicvxZCmzU4-M5z_jOzZ45_pr4wEMQ/exec";
-
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzILPforg9ogmeGQYi-GmWZgEsnrEE-qgK9G3BeXWr6kLKYFFe5hRQY5j1HBwvbk_xd4w/exec";
 
 /* =====================================================
-   PREVIEW FOTO BEFORE
+   SET DEFAULT TANGGAL HARI INI
    ===================================================== */
-
-document
-    .getElementById("fotoBefore")
-    .addEventListener("change", function () {
-
-        previewFoto(
-            this,
-            "previewBefore"
-        );
-
-    });
-
+window.addEventListener("DOMContentLoaded", () => {
+    const inputTanggal = document.getElementById("tanggal");
+    if (inputTanggal && !inputTanggal.value) {
+        inputTanggal.value = new Date().toISOString().split("T")[0];
+    }
+});
 
 /* =====================================================
-   PREVIEW FOTO AFTER
+   EVENT LISTENER PREVIEW FOTO
    ===================================================== */
+document.getElementById("fotoBefore").addEventListener("change", function () {
+    previewFoto(this, "previewBefore");
+});
 
-document
-    .getElementById("fotoAfter")
-    .addEventListener("change", function () {
-
-        previewFoto(
-            this,
-            "previewAfter"
-        );
-
-    });
-
-
-/* =====================================================
-   FUNGSI PREVIEW FOTO
-   ===================================================== */
+document.getElementById("fotoAfter").addEventListener("change", function () {
+    previewFoto(this, "previewAfter");
+});
 
 function previewFoto(input, previewId) {
-
-    const preview =
-        document.getElementById(previewId);
-
-    if (
-        input.files &&
-        input.files[0]
-    ) {
-
-        const file =
-            input.files[0];
-
-        if (
-            !file.type.startsWith("image/")
-        ) {
-
-            alert(
-                "File yang dipilih harus berupa gambar."
-            );
-
+    const preview = document.getElementById(previewId);
+    if (input.files && input.files[0]) {
+        const file = input.files[0];
+        if (!file.type.startsWith("image/")) {
+            alert("File yang dipilih harus berupa gambar.");
             input.value = "";
-
             preview.style.display = "none";
-
             return;
         }
 
-        const reader =
-            new FileReader();
-
-        reader.onload =
-            function (event) {
-
-                preview.src =
-                    event.target.result;
-
-                preview.style.display =
-                    "block";
-
-            };
-
+        const reader = new FileReader();
+        reader.onload = function (event) {
+            preview.src = event.target.result;
+            preview.style.display = "block";
+        };
         reader.readAsDataURL(file);
-
     } else {
-
-        preview.style.display =
-            "none";
-
+        preview.style.display = "none";
     }
-
 }
-
 
 /* =====================================================
-   KOMPRES FOTO
-   Agar ukuran data tidak terlalu besar
+   KOMPRES FOTO KE BASE64
    ===================================================== */
-
 function kompresFoto(file) {
-
-    return new Promise(
-        function (resolve, reject) {
-
-            const reader =
-                new FileReader();
-
-            reader.onload =
-                function (event) {
-
-                    const img =
-                        new Image();
-
-                    img.onload =
-                        function () {
-
-                            const MAX_WIDTH =
-                                1200;
-
-                            const MAX_HEIGHT =
-                                1200;
-
-                            let width =
-                                img.width;
-
-                            let height =
-                                img.height;
-
-
-                            /* ==========================
-                               Menyesuaikan ukuran
-                               ========================== */
-
-                            if (
-                                width > MAX_WIDTH ||
-                                height > MAX_HEIGHT
-                            ) {
-
-                                const ratio =
-                                    Math.min(
-                                        MAX_WIDTH / width,
-                                        MAX_HEIGHT / height
-                                    );
-
-                                width =
-                                    Math.round(
-                                        width * ratio
-                                    );
-
-                                height =
-                                    Math.round(
-                                        height * ratio
-                                    );
-
-                            }
-
-
-                            /* ==========================
-                               Canvas
-                               ========================== */
-
-                            const canvas =
-                                document.createElement(
-                                    "canvas"
-                                );
-
-                            canvas.width =
-                                width;
-
-                            canvas.height =
-                                height;
-
-
-                            const ctx =
-                                canvas.getContext(
-                                    "2d"
-                                );
-
-
-                            ctx.drawImage(
-                                img,
-                                0,
-                                0,
-                                width,
-                                height
-                            );
-
-
-                            /* ==========================
-                               Convert ke JPEG
-                               ========================== */
-
-                            const compressed =
-                                canvas.toDataURL(
-                                    "image/jpeg",
-                                    0.75
-                                );
-
-                            resolve(
-                                compressed
-                            );
-
-                        };
-
-
-                    img.onerror =
-                        function () {
-
-                            reject(
-                                new Error(
-                                    "Foto tidak dapat diproses."
-                                )
-                            );
-
-                        };
-
-
-                    img.src =
-                        event.target.result;
-
-                };
-
-
-            reader.onerror =
-                function () {
-
-                    reject(
-                        new Error(
-                            "Foto gagal dibaca."
-                        )
-                    );
-
-                };
-
-
-            reader.readAsDataURL(file);
-
+    return new Promise((resolve, reject) => {
+        if (!file) {
+            resolve(null);
+            return;
         }
-    );
 
+        const reader = new FileReader();
+        reader.onload = function (event) {
+            const img = new Image();
+            img.onload = function () {
+                const MAX_WIDTH = 800; // Optimal untuk pengiriman via Apps Script
+                const MAX_HEIGHT = 800;
+                let width = img.width;
+                let height = img.height;
+
+                if (width > MAX_WIDTH || height > MAX_HEIGHT) {
+                    const ratio = Math.min(MAX_WIDTH / width, MAX_HEIGHT / height);
+                    width = Math.round(width * ratio);
+                    height = Math.round(height * ratio);
+                }
+
+                const canvas = document.createElement("canvas");
+                canvas.width = width;
+                canvas.height = height;
+
+                const ctx = canvas.getContext("2d");
+                ctx.drawImage(img, 0, 0, width, height);
+
+                const compressed = canvas.toDataURL("image/jpeg", 0.7);
+                resolve(compressed);
+            };
+            img.onerror = () => reject(new Error("Foto tidak dapat diproses."));
+            img.src = event.target.result;
+        };
+        reader.onerror = () => reject(new Error("Foto gagal dibaca."));
+        reader.readAsDataURL(file);
+    });
 }
-
 
 /* =====================================================
    MENAMPILKAN PESAN STATUS
    ===================================================== */
-
-function tampilkanStatus(
-    pesan,
-    tipe
-) {
-
-    const box =
-        document.getElementById(
-            "statusMessage"
-        );
-
-    box.textContent =
-        pesan;
-
-    box.className =
-        "status-message";
-
-    box.classList.add(
-        tipe
-    );
-
-    box.style.display =
-        "block";
-
+function tampilkanStatus(pesan, tipe) {
+    const box = document.getElementById("statusMessage");
+    box.textContent = pesan;
+    box.className = "status-message " + tipe;
+    box.style.display = "block";
 }
-
 
 /* =====================================================
    SIMPAN PEMANTAUAN
    ===================================================== */
-
 async function simpanPemantauan() {
+    const btn = document.getElementById("btnSimpan");
+    const form = document.getElementById("formLingkungan");
 
-    const btn =
-        document.getElementById(
-            "btnSimpan"
-        );
+    const tanggal = document.getElementById("tanggal").value.trim();
+    const petugas = document.getElementById("petugas").value.trim();
+    const unit = document.getElementById("unit").value.trim();
+    const lokasi = document.getElementById("lokasi").value.trim();
+    const risiko = document.getElementById("risiko").value.trim();
+    const dampak = document.getElementById("dampak").value.trim();
+    const pengendalian = document.getElementById("pengendalian").value.trim();
+    const hasil = document.getElementById("hasil").value.trim();
+    const rekomendasi = document.getElementById("rekomendasi").value.trim();
 
+    const fileBefore = document.getElementById("fotoBefore").files[0];
+    const fileAfter = document.getElementById("fotoAfter").files[0];
 
-    /* =================================================
-       AMBIL DATA FORM
-       ================================================= */
-
-    const tanggal =
-        document
-            .getElementById("tanggal")
-            .value
-            .trim();
-
-
-    const petugas =
-        document
-            .getElementById("petugas")
-            .value
-            .trim();
-
-
-    const unit =
-        document
-            .getElementById("unit")
-            .value
-            .trim();
-
-
-    const lokasi =
-        document
-            .getElementById("lokasi")
-            .value
-            .trim();
-
-
-    const risiko =
-        document
-            .getElementById("risiko")
-            .value
-            .trim();
-
-
-    const dampak =
-        document
-            .getElementById("dampak")
-            .value
-            .trim();
-
-
-    const pengendalian =
-        document
-            .getElementById("pengendalian")
-            .value
-            .trim();
-
-
-    const hasil =
-        document
-            .getElementById("hasil")
-            .value
-            .trim();
-
-
-    const rekomendasi =
-        document
-            .getElementById("rekomendasi")
-            .value
-            .trim();
-
-
-    const fileBefore =
-        document
-            .getElementById("fotoBefore")
-            .files[0];
-
-
-    const fileAfter =
-        document
-            .getElementById("fotoAfter")
-            .files[0];
-
-
-    /* =================================================
-       VALIDASI DATA
-       ================================================= */
-
-    if (
-        !tanggal ||
-        !petugas ||
-        !unit ||
-        !lokasi ||
-        !risiko ||
-        !dampak ||
-        !pengendalian ||
-        !hasil ||
-        !rekomendasi
-    ) {
-
-        tampilkanStatus(
-            "Mohon lengkapi seluruh data pemantauan terlebih dahulu.",
-            "status-error"
-        );
-
+    if (!tanggal || !petugas || !unit || !lokasi || !risiko || !dampak || !pengendalian || !hasil || !rekomendasi) {
+        tampilkanStatus("Mohon lengkapi seluruh data pemantauan terlebih dahulu.", "status-error");
         return;
-
     }
 
-
-    /* =================================================
-       VALIDASI FOTO
-       ================================================= */
-
-    if (!fileBefore) {
-
-        tampilkanStatus(
-            "Mohon upload Foto Before terlebih dahulu.",
-            "status-error"
-        );
-
-        return;
-
-    }
-
-
-    if (!fileAfter) {
-
-        tampilkanStatus(
-            "Mohon upload Foto After terlebih dahulu.",
-            "status-error"
-        );
-
-        return;
-
-    }
-
-
-    if (
-        !fileBefore.type.startsWith("image/")
-    ) {
-
-        tampilkanStatus(
-            "Foto Before harus berupa file gambar.",
-            "status-error"
-        );
-
-        return;
-
-    }
-
-
-    if (
-        !fileAfter.type.startsWith("image/")
-    ) {
-
-        tampilkanStatus(
-            "Foto After harus berupa file gambar.",
-            "status-error"
-        );
-
-        return;
-
-    }
-
-
-    /* =================================================
-       MULAI PROSES
-       ================================================= */
-
-    btn.disabled =
-        true;
-
-    btn.textContent =
-        "MENYIMPAN...";
-
-
-    tampilkanStatus(
-        "Sedang memproses data dan mengunggah foto. Mohon tunggu...",
-        "status-loading"
-    );
-
+    btn.disabled = true;
+    btn.textContent = "MENYIMPAN...";
+    tampilkanStatus("Sedang memproses data. Mohon tunggu...", "status-loading");
 
     try {
+        let fotoBeforeBase64 = null;
+        let fotoAfterBase64 = null;
 
+        if (fileBefore) fotoBeforeBase64 = await kompresFoto(fileBefore);
+        if (fileAfter) fotoAfterBase64 = await kompresFoto(fileAfter);
 
-        /* =============================================
-           KOMPRES FOTO
-           ============================================= */
-
-        const fotoBefore =
-            await kompresFoto(
-                fileBefore
-            );
-
-
-        const fotoAfter =
-            await kompresFoto(
-                fileAfter
-            );
-
-
-        /* =============================================
-           DATA YANG DIKIRIM
-           ============================================= */
-
+        // Kunci payload diselaraskan dengan Apps Script
         const data = {
-
-            jenisPemantauan:
-                "Pemantauan Risiko Keselamatan Lingkungan",
-
-            tanggalPemantauan:
-                tanggal,
-
-            namaPetugas:
-                petugas,
-
-            ruangan:
-                unit,
-
-            areaLokasi:
-                lokasi,
-
-            potensiRisiko:
-                risiko,
-
-            dampak:
-                dampak,
-
-            pengendalian:
-                pengendalian,
-
-            hasilPemantauan:
-                hasil,
-
-            rekomendasi:
-                rekomendasi,
-
-            status:
-                "Belum Ditindaklanjuti",
-
-            fotoBefore:
-                fotoBefore,
-
-            fotoAfter:
-                fotoAfter
-
+            jenisPemantauan: "Keselamatan Lingkungan",
+            tanggal: tanggal,
+            petugas: petugas,
+            unit: unit,
+            lokasi: lokasi,
+            risiko: risiko,
+            dampak: dampak,
+            pengendalian: pengendalian,
+            hasil: hasil,
+            rekomendasi: rekomendasi,
+            status: "Belum Ditindaklanjuti",
+            fotoBefore: fotoBeforeBase64,
+            fotoAfter: fotoAfterBase64
         };
 
+        await fetch(GOOGLE_SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8"
+            },
+            body: JSON.stringify(data)
+        });
 
-        /* =============================================
-           KIRIM KE GOOGLE APPS SCRIPT
-           ============================================= */
+        tampilkanStatus("Data pemantauan lingkungan berhasil disimpan ke Google Sheet!", "status-success");
+        alert("Berhasil! Data pemantauan lingkungan sudah terkirim.");
 
-        await fetch(
-            GOOGLE_SCRIPT_URL,
-            {
+        form.reset();
+        document.getElementById("previewBefore").style.display = "none";
+        document.getElementById("previewAfter").style.display = "none";
 
-                method: "POST",
-
-                mode: "no-cors",
-
-                headers: {
-
-                    "Content-Type":
-                        "text/plain;charset=utf-8"
-
-                },
-
-                body:
-                    JSON.stringify(data)
-
-            }
-        );
-
-
-        /* =============================================
-           BERHASIL DIKIRIM
-           ============================================= */
-
-        tampilkanStatus(
-            "Data berhasil dikirim. Silakan cek Google Sheet dan Google Drive.",
-            "status-success"
-        );
-
-
-        alert(
-            "Pemantauan berhasil disimpan!\n\n" +
-            "Data akan masuk ke Google Sheet dan foto akan disimpan ke Google Drive."
-        );
-
-
-        /* =============================================
-           RESET FORM
-           ============================================= */
-
-        document
-            .getElementById("tanggal")
-            .value = "";
-
-
-        document
-            .getElementById("petugas")
-            .value = "";
-
-
-        document
-            .getElementById("unit")
-            .value = "";
-
-
-        document
-            .getElementById("lokasi")
-            .value = "";
-
-
-        document
-            .getElementById("risiko")
-            .value = "";
-
-
-        document
-            .getElementById("dampak")
-            .value = "";
-
-
-        document
-            .getElementById("pengendalian")
-            .value = "";
-
-
-        document
-            .getElementById("hasil")
-            .value = "";
-
-
-        document
-            .getElementById("rekomendasi")
-            .value = "";
-
-
-        document
-            .getElementById("fotoBefore")
-            .value = "";
-
-
-        document
-            .getElementById("fotoAfter")
-            .value = "";
-
-
-        document
-            .getElementById("previewBefore")
-            .style.display = "none";
-
-
-        document
-            .getElementById("previewAfter")
-            .style.display = "none";
-
+        // Reset tanggal ke hari ini
+        document.getElementById("tanggal").value = new Date().toISOString().split("T")[0];
 
     } catch (error) {
-
-
-        console.error(
-            "Error:",
-            error
-        );
-
-
-        tampilkanStatus(
-            "Data gagal dikirim. Periksa koneksi internet dan konfigurasi Apps Script.",
-            "status-error"
-        );
-
-
-        alert(
-            "Data gagal dikirim.\n\n" +
-            "Silakan coba lagi."
-        );
-
-
+        console.error("Error:", error);
+        tampilkanStatus("Data gagal dikirim. Periksa koneksi internet.", "status-error");
+        alert("Data gagal dikirim. Silakan coba lagi.");
     } finally {
-
-
-        btn.disabled =
-            false;
-
-        btn.textContent =
-            "SIMPAN PEMANTAUAN";
-
+        btn.disabled = false;
+        btn.textContent = "SIMPAN PEMANTAUAN";
     }
-
 }
-
 </script>
 
-
 </body>
-
 </html>

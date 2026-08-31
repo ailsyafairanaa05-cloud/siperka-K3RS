@@ -221,19 +221,13 @@
 
 </main>
 
+<script src="form-handler.js"></script>
 
 <script>
-
 function simpanPemantauan(event) {
-
-    event.preventDefault();
-
-    alert(
-        "Data pemantauan keamanan berhasil diisi."
-    );
-
+    event.preventDefault(); // Mencegah reload halaman
+    kirimData("Keamanan");   // Panggil fungsi pengiriman
 }
-
 </script>
 
 
