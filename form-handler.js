@@ -107,12 +107,6 @@ async function kirimData(jenis) {
     return;
   }
 
-  // Validasi Checkbox (Wajib Dicentang)
-  if (statusCheck && !statusCheck.checked) {
-    showStatus("Konfirmasi penanganan wajib dicentang sebelum menyimpan data.", "error");
-    return;
-  }
-
   if (btn) {
     btn.disabled = true;
     btn.textContent = "MEMPROSES...";
