@@ -1,226 +1,110 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Pemantauan Risiko Keselamatan K3RS</title>
-
-    <link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pemantauan Risiko Keselamatan - K3RS</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
-
 <body>
 
 <header class="header">
-
-    <div class="header-content">
-
-        <div class="logo">
-            K3RS
-        </div>
-
-        <div>
-
-            <h1>
-                Pemantauan Risiko
-            </h1>
-
-            <p>
-                Keselamatan
-            </p>
-
-        </div>
-
-    </div>
-
+  <div class="header-content">
+    <div class="logo">K3RS</div>
+    <h1>Pemantauan Risiko</h1>
+    <p>Unit Keselamatan Kerja</p>
+  </div>
 </header>
 
-
 <main class="form-container">
+  <div class="form-card">
+    <h2>Formulir Pemantauan Risiko Keselamatan</h2>
+    <p class="form-description">Silakan lengkapi data observasi dan identifikasi risiko keselamatan kerja berikut.</p>
 
-    <div class="form-card">
+    <div id="statusMessage" class="status-message"></div>
 
-        <h2>
-            Formulir Pemantauan Risiko Keselamatan
-        </h2>
+    <form onsubmit="event.preventDefault(); kirimData('Keselamatan Kerja');">
+      
+      <div class="form-group">
+        <label for="tanggal">Tanggal Pemantauan <span class="required">*</span></label>
+        <input type="date" id="tanggal" class="form-control" required>
+      </div>
 
-        <p class="form-description">
-            Silakan lengkapi data pemantauan dengan benar.
-        </p>
+      <div class="form-group">
+        <label for="petugas">Nama Petugas <span class="required">*</span></label>
+        <input type="text" id="petugas" class="form-control" placeholder="Nama lengkap petugas pemeriksa" required>
+      </div>
 
+      <div class="form-group">
+        <label for="unit">Ruangan / Unit <span class="required">*</span></label>
+        <input type="text" id="unit" class="form-control" placeholder="Contoh: Instalasi Rawat Inap / Laboratorium / CSSD" required>
+      </div>
 
-        <form onsubmit="simpanPemantauan(event)">
+      <div class="form-group">
+        <label for="lokasi">Area / Lokasi <span class="required">*</span></label>
+        <input type="text" id="lokasi" class="form-control" placeholder="Contoh: Koridor Timur Lantai 3" required>
+      </div>
 
+      <div class="form-group">
+        <label for="risiko">Potensi Risiko Keselamatan <span class="required">*</span></label>
+        <textarea id="risiko" class="form-control" placeholder="Contoh: Lantai licin tanpa rambu peringatan, kabel berserakan di jalur evakuasi" required></textarea>
+      </div>
 
-            <div class="form-group">
+      <div class="form-group">
+        <label for="dampak">Dampak <span class="required">*</span></label>
+        <textarea id="dampak" class="form-control" placeholder="Contoh: Petugas atau pasien berisiko terpeleset dan cedera fisik" required></textarea>
+      </div>
 
-                <label>
-                    Tanggal Pemantauan *
-                </label>
+      <div class="form-group">
+        <label for="pengendalian">Pengendalian <span class="required">*</span></label>
+        <textarea id="pengendalian" class="form-control" placeholder="Upaya isolasi atau mitigasi awal yang telah dilakukan" required></textarea>
+      </div>
 
-                <input
-                    type="date"
-                    id="tanggal"
-                    required>
+      <div class="form-group">
+        <label for="hasil">Hasil Pemantauan <span class="required">*</span></label>
+        <textarea id="hasil" class="form-control" placeholder="Kondisi riil saat observasi dilakukan" required></textarea>
+      </div>
 
-            </div>
+      <div class="form-group">
+        <label for="rekomendasi">Rekomendasi <span class="required">*</span></label>
+        <textarea id="rekomendasi" class="form-control" placeholder="Rekomendasi perbaikan atau tindakan korektif" required></textarea>
+      </div>
 
+      <!-- Dokumentasi Foto (Opsional) -->
+      <div class="photo-section">
+        <div class="photo-section-header">
+          <h3>Dokumentasi Lapangan (Opsional)</h3>
+          <p>Unggah bukti visual sebelum dan sesudah tindakan jika tersedia.</p>
+        </div>
+        <div class="photo-grid">
+          <div class="photo-upload-box">
+            <label for="fotoBefore">Foto Sebelum (Before)</label>
+            <input type="file" id="fotoBefore" class="file-input" accept="image/*" capture="environment">
+            <img id="previewBefore" class="photo-preview" alt="Pratinjau Foto Before">
+          </div>
+          <div class="photo-upload-box">
+            <label for="fotoAfter">Foto Sesudah (After)</label>
+            <input type="file" id="fotoAfter" class="file-input" accept="image/*" capture="environment">
+            <img id="previewAfter" class="photo-preview" alt="Pratinjau Foto After">
+          </div>
+        </div>
+      </div>
 
-            <div class="form-group">
+      <!-- Checkbox Konfirmasi Penanganan (Wajib) -->
+      <div class="verification-box">
+        <input type="checkbox" id="statusCheck" required>
+        <label for="statusCheck">
+          Saya menyatakan bahwa temuan risiko keselamatan ini telah ditangani atau telah ditindaklanjuti sebagaimana mestinya.
+        </label>
+      </div>
 
-                <label>
-                    Nama Petugas *
-                </label>
+      <button type="submit" class="btn-submit">SIMPAN PEMANTAUAN</button>
+    </form>
 
-                <input
-                    type="text"
-                    id="petugas"
-                    placeholder="Masukkan nama petugas"
-                    required>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Unit / Bagian *
-                </label>
-
-                <input
-                    type="text"
-                    id="unit"
-                    placeholder="Masukkan unit atau bagian"
-                    required>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Area / Lokasi *
-                </label>
-
-                <input
-                    type="text"
-                    id="lokasi"
-                    placeholder="Contoh: Koridor ruang rawat"
-                    required>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Potensi Risiko Keselamatan *
-                </label>
-
-                <textarea
-                    id="risiko"
-                    placeholder="Tuliskan potensi risiko yang ditemukan"
-                    required></textarea>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Dampak *
-                </label>
-
-                <textarea
-                    id="dampak"
-                    placeholder="Tuliskan dampak yang mungkin terjadi"
-                    required></textarea>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Pengendalian *
-                </label>
-
-                <textarea
-                    id="pengendalian"
-                    placeholder="Tuliskan pengendalian yang sudah dilakukan"
-                    required></textarea>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Hasil Pemantauan *
-                </label>
-
-                <textarea
-                    id="hasil"
-                    placeholder="Tuliskan hasil pemantauan"
-                    required></textarea>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Rekomendasi *
-                </label>
-
-                <textarea
-                    id="rekomendasi"
-                    placeholder="Tuliskan rekomendasi perbaikan"
-                    required></textarea>
-
-            </div>
-
-
-            <button
-                type="submit"
-                class="btn-submit">
-
-                SIMPAN PEMANTAUAN
-
-            </button>
-
-
-        </form>
-
-
-        <a
-            href="index.html"
-            class="btn-back">
-
-            ← Kembali ke Halaman Utama
-
-        </a>
-
-
-    </div>
-
+    <a href="index.html" class="btn-back">Kembali ke Halaman Utama</a>
+  </div>
 </main>
 
 <script src="form-handler.js"></script>
-<script>
-  function simpanPemantauan(event) {
-    event.preventDefault();
-    kirimData("Keselamatan Kerja");
-  }
-</script>
-
-
 </body>
-
 </html>
